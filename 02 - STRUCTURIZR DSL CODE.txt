@@ -1,0 +1,80 @@
+workspace {
+    model {
+        user = person "User"
+        
+        expensesTracker = softwareSystem "Expenses Tracker Software System" {
+            webapp = container "Web application" "The set of pages that implements the core functionalities of the application" "Built with HTML, CSS (Tailwind, daisyUI), JavaScript, and AJAX" {
+                tags "webapp"
+            }
+            
+            chartJS = container "chartJS Chart library" "The software library that makes chart making straightforward" {
+                tags "additionalComponents"
+            }
+            
+            tailwindFramework = container "Tailwind CSS framework" "Used mainly for responsitivity purposes" {
+                tags "additionalComponents"
+            }
+            
+            daisyUILibrary = container "daisyUI CSS library" "Used for the aesthetic part of the application" {
+                tags "additionalComponents"
+            }
+            
+            server = container "Server" "Apache" {
+                tags "server"
+            }
+            
+            SQLdatabase = container "MySQL database" "Stores both the application and user data" {
+                tags "database"
+            }
+        }
+
+        user -> webapp "Interacts with"
+        webapp -> tailwindFramework "Uses"
+        webapp -> daisyUILibrary "Uses"
+        webapp -> chartJs "Uses"
+        
+        webapp -> server "Communicates with"
+        
+        server -> SQLdatabase "Queries"
+    }
+
+    views {
+        container expensesTracker "Component" {
+            include *
+            autoLayout
+        }
+        
+        styles {
+            element "Software System" {
+                background #1168bd
+                color #ffffff
+            }
+            element "Person" {
+                shape person
+                background #08427b
+                color #ffffff
+            }
+            element "webapp" {
+                shape webbrowser
+                background #57b514
+                color #ffffff
+            }
+            element additionalComponents {
+                shape component
+                background #1542bf
+                color #ffffff
+            }
+            
+            element "server" {
+                shape roundedbox
+                background #1089a1
+                color #ffffff
+            }
+            element "database" {
+                shape cylinder
+                background #820707
+                color #ffffff
+            }
+        }
+    }
+}

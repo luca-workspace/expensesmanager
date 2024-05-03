@@ -1,0 +1,87 @@
+ACCESS PAGE TESTS:
+
+1. Log in - wrong password.
+	username: test
+	password: wrongpass
+--> "Invalid Password" modal appears.
+
+2. Log in - user not created.
+	username: hello
+	password: hello
+--> "User not registered" modal appears.
+
+{
+To test the sign up page, first create a user:
+	username: signuptest
+	password: 00$&JWacv
+
+Then log out.
+}
+
+3. Sign up - user already created
+	username: signuptest
+	password: 00$&JWacv
+	(the same as before)
+--> "User already registered" modal appears.
+
+4. Sign up - username not between 8 and 10 characters
+	username: signup
+	password: 00$&JWacv (the same as before, as we know it is accepted)
+--> An alert explaining the credentials criteria appears.
+
+Sign up - password not valid
+(the password must be 8 to 10 characters long, and contain:
+	2-3 lowercase letters
+	2-3 uppercase letters
+	2 digits
+	2 special characters among: !"$%&()=?^:;@#)
+
+Using the username signuptwo, passwords which do not fit the requirements are:
+	aaaaBB00%% (4 lowercase letters)
+	aaBB0%% (only one digit)
+	1j#d0NKh (only one special character)
+	BBBAAA%%000 (too long)
+--> An alert explaining the credentials criteria appears.
+
+MAIN PAGE TESTS:
+
+1. Navbar - 3 bars button (side menu toggle)
+--> Clicking on the button makes the side menu open
+
+2. Side menu - closing
+--> Clicking any point in the area next to the side menu or clicking on any items of it makes it close.
+
+3. Navbar - title button
+--> Clicking it from any tab makes the first tab display and its content update
+
+4. Navbar - theme toggle
+--> Clicking on it switches theme. On reload, the theme should reflect the last change.
+
+4. Navbar - log out button
+--> Clicking on it logs the user out.
+
+5. Tab 1 - chart
+--> hovering should display a small box, as expected with Chart.js
+--> Clicking on the name of a category should hide that category's information. Clicking it again should display it again.
+
+6. Tab 1 - "Add funds", "Add expense(s)", and "View more" buttons
+--> Clicking on them should display the "Add expense(s)", "Add revenue(s)", and "Detailed view" tabs resectively.
+
+7. Tab "Add expense(s)" - adding of a record
+	amount spent: 100000
+	category: Bills
+	description: (empty)
+	location: Andorra
+	date: (current date)
+--> The expected result is that the record is successfully added and that on the tab 1 the letter "K" appears.
+--> Repeating the process for a million, several million, or a billion should display an "M" or a "B".
+
+8. Modal "Delete record by ID" - deletion
+	id: -1 (with the minus sign, to be sure that it doesn't exist)
+--> "The record doesn't exist" modal appears
+	id: (the ID of a record in tab 1; take note of the type)
+--> "Record deleted successfully!" modal appears and the record is deleted (refresh tab 1 to check)
+
+9. Modal "Permanently close account" - deletion
+--> Clicking the green cancel button prevents the account from being deleted (wait at least 6 seconds after clicking on it)
+--> Not doing anything causes the deletion of the account. Try loggin in again.
