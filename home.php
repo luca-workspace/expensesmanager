@@ -1020,21 +1020,17 @@
       <dialog id="recordDeletionModal" class="modal" style="backdrop-filter: blur(5px);">
         <div class="modal-box">
           <h3 class="font-bold text-lg">Delete record</h3>
-          <div class="flex justify-center join mt-8">
-            <div>
-              <div>
-                <input id="recordID" class="input input-bordered join-item" placeholder="ID" type="number">
-              </div>
-            </div>
 
-            <select id="recordType" class="select select-bordered join-item">
+          <div class="join join-vertical flex flex-col mt-8">
+            
+            <input id="recordID" class="input input-bordered join-item w-full" placeholder="ID" type="number">
+
+            <select id="recordType" class="select select-bordered join-item w-full">
               <option>Expense</option>
               <option>Revenue</option>
             </select>
 
-            <div>
-              <button class="btn join-item btn-outline btn-error" onclick="deleteRecord()">Delete</button>
-            </div>
+            <button class="btn join-item btn-outline btn-error w-full" onclick="deleteRecord()">Delete</button>
           </div>
 
           <div class="modal-action">
